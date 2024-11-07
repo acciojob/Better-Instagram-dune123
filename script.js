@@ -1,4 +1,3 @@
-//your code here
 const images = document.querySelectorAll('.image');
 
 let draggedElement = null;
@@ -15,10 +14,10 @@ images.forEach((image) => {
 
     image.addEventListener("drop", (e) => {
         e.preventDefault();
+        e.preventDefault();
         if (draggedElement && draggedElement !== e.target) {
-            let tempContent = e.target.innerHTML;
-            e.target.innerHTML = draggedElement.innerHTML;
-            draggedElement.innerHTML = tempContent;
+            const parent = e.target.parentNode;
+            parent.insertBefore(draggedElement, e.target.nextSibling);
         }
         draggedElement.classList.remove("dragging");
         draggedElement = null;
@@ -31,3 +30,4 @@ images.forEach((image) => {
         }
     });
 });
+
